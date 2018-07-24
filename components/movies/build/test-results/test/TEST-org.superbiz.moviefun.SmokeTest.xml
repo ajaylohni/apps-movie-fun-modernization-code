@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.superbiz.moviefun.SmokeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-07-24T02:22:07" hostname="cliftons07-ThinkCentre-E93" time="1.661">
+  <properties/>
+  <testcase name="smokeTest" classname="org.superbiz.moviefun.SmokeTest" time="1.661"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
