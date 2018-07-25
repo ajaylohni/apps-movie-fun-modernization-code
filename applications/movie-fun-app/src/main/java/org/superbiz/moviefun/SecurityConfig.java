@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.client.RestOperations;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 
 @Configuration
 @EnableOAuth2Sso
@@ -27,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    @LoadBalanced
     public RestOperations restTemplate(OAuth2ProtectedResourceDetails resource, OAuth2ClientContext oauth2ClientContext) {
         return new OAuth2RestTemplate(resource, oauth2ClientContext);
     }

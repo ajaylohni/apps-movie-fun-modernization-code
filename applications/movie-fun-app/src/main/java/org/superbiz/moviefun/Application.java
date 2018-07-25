@@ -11,8 +11,10 @@ import org.springframework.context.annotation.Bean;
 import org.superbiz.moviefun.blobstore.BlobStore;
 import org.superbiz.moviefun.blobstore.S3Store;
 import org.superbiz.moviefun.moviesapi.MovieServlet;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class Application {
 
     public static void main(String... args) {
