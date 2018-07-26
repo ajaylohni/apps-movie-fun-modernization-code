@@ -42,23 +42,20 @@ task dependenciesGraphDot {
                 Configuration compileConfig = subProject.configurations["compile"]
 
                 compileConfig
-                    .dependencies
-                    .grep { it.respondsTo("getDependencyProject") }
-                    .forEach { dotFile << """  "$subProject.name" -> "$it.dependencyProject.name"\n""" }
+                        .dependencies
+                        .grep { it.respondsTo("getDependencyProject") }
+                        .forEach { dotFile << """  "$subProject.name" -> "$it.dependencyProject.name"\n""" }
             } catch (UnknownConfigurationException ignored) {
             }
         }
         dotFile << "}\n"
     }
 }
-
 task dependenciesGraph(dependsOn: "dependenciesGraphDot", type: Exec) {
     workingDir "$project.buildDir/dependenciesGraph"
     commandLine "dot", "-O", "-Tpng", "graph.dot"
 }
-
 task clean(type: Delete) {
     delete "build"
 }
-
 defaultTasks "clean", "build", "dependenciesGraph"

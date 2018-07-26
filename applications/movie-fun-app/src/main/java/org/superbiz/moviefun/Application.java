@@ -3,11 +3,16 @@ package org.superbiz.moviefun;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3Client;
+import org.apache.catalina.Context;
+import org.apache.catalina.webresources.StandardRoot;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.superbiz.moviefun.blobstore.BlobStore;
 import org.superbiz.moviefun.blobstore.S3Store;
@@ -15,6 +20,7 @@ import org.superbiz.moviefun.moviesapi.MovieServlet;
 
 @EnableEurekaClient
 @SpringBootApplication
+@EnableHystrix
 public class Application {
 
     public static void main(String... args) {
@@ -49,4 +55,5 @@ public class Application {
 
         return new S3Store(s3Client, s3BucketName);
     }
+
 }
